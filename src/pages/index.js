@@ -36,7 +36,7 @@ export default function Home() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setThinking(true);
-    setThinkingMessage('Analyzing data...'); // Initial thinking message
+    setThinkingMessage('Analyzing data...');
 
     try {
       const response = await fetch('/api/detect', {
@@ -109,20 +109,20 @@ export default function Home() {
         }
       `}</style>
       <div className="absolute inset-0 bg-gradient-to-b from-green-500/10 to-transparent pointer-events-none"></div>
-      <div className="relative max-w-7xl mx-auto p-8">
-        <h1 className="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-green-500 to-emerald-600 mb-12 text-center tracking-tight">
+      <div className="relative max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-green-500 to-emerald-600 mb-6 sm:mb-8 lg:mb-12 text-center tracking-tight">
           AI CyberSentry Scanner
         </h1>
-        <div className="grid grid-cols-12 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 lg:gap-8">
           {/* Demo Data Section */}
-          <div className="col-span-3">
-            <div className="backdrop-blur-xl bg-black/40 rounded-[2rem] shadow-2xl shadow-green-500/20 p-6 border border-green-500/30">
-              <h2 className="text-xl font-bold text-green-400 mb-4">Demo Examples</h2>
-              <div className="space-y-4 max-h-[500px] overflow-y-auto">
+          <div className="md:col-span-12 lg:col-span-3">
+            <div className="backdrop-blur-xl bg-black/40 rounded-[2rem] shadow-2xl shadow-green-500/20 p-4 sm:p-6 border border-green-500/30">
+              <h2 className="text-lg sm:text-xl font-bold text-green-400 mb-4">Demo Examples</h2>
+              <div className="space-y-4 max-h-[300px] sm:max-h-[400px] lg:max-h-[500px] overflow-y-auto">
                 {demoData.map((demo, index) => (
                   <div 
                     key={index}
-                    className="p-4 bg-black/60 rounded-xl border border-green-500/20 hover:border-green-500/40 transition-all cursor-pointer"
+                    className="p-3 sm:p-4 bg-black/60 rounded-xl border border-green-500/20 hover:border-green-500/40 transition-all cursor-pointer"
                     onClick={() => setData(demo.content)}
                   >
                     <h3 className="text-green-400 font-medium mb-2">{demo.title}</h3>
@@ -135,13 +135,13 @@ export default function Home() {
             </div>
           </div>
           {/* Main Content Section */}
-          <div className="col-span-9">
-            <div className="relative backdrop-blur-xl bg-black/40 rounded-[2rem] shadow-2xl shadow-green-500/20 p-10 border border-green-500/30">
+          <div className="md:col-span-12 lg:col-span-9">
+            <div className="relative backdrop-blur-xl bg-black/40 rounded-[2rem] shadow-2xl shadow-green-500/20 p-4 sm:p-6 lg:p-10 border border-green-500/30">
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-t-[2rem]"></div>
-              <form onSubmit={handleSubmit} className="space-y-8">
+              <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
                 <div className="relative group">
                   <textarea
-                    className="w-full h-56 p-6 bg-black/80 text-green-400 rounded-xl border-2 border-green-500/30 focus:border-green-400 focus:ring-4 focus:ring-green-400/20 transition-all duration-300 resize-none font-mono text-sm placeholder-green-700"
+                    className="w-full h-40 sm:h-56 p-4 sm:p-6 bg-black/80 text-green-400 rounded-xl border-2 border-green-500/30 focus:border-green-400 focus:ring-4 focus:ring-green-400/20 transition-all duration-300 resize-none font-mono text-sm placeholder-green-700"
                     value={data}
                     onChange={(e) => setData(e.target.value)}
                     placeholder="// Input data for security analysis..."
@@ -151,11 +151,11 @@ export default function Home() {
                   </div>
                 </div>
                 <button
-                  className="w-full py-5 px-8 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-xl hover:from-green-600 hover:to-emerald-700 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] focus:ring-4 focus:ring-green-500/30 group relative overflow-hidden"
+                  className="w-full py-4 sm:py-5 px-6 sm:px-8 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-xl hover:from-green-600 hover:to-emerald-700 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] focus:ring-4 focus:ring-green-500/30 group relative overflow-hidden"
                   type="submit"
                 >
-                  <span className="relative z-10 flex items-center justify-center gap-3 text-lg">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-3 text-base sm:text-lg">
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                     </svg>
                     Initialize Scan
@@ -163,14 +163,14 @@ export default function Home() {
                 </button>
               </form>
               {thinking ? (
-                <div className="mt-10 p-8 bg-black/90 rounded-xl border border-green-500/40 backdrop-blur-lg">
-                  <h2 className="text-2xl font-bold text-green-400 mb-6 flex items-center gap-3">
-                    <svg className="w-6 h-6 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="mt-6 sm:mt-8 lg:mt-10 p-4 sm:p-6 lg:p-8 bg-black/90 rounded-xl border border-green-500/40 backdrop-blur-lg">
+                  <h2 className="text-xl sm:text-2xl font-bold text-green-400 mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                     System Analysis in Progress
                   </h2>
-                  <div className="max-h-[500px] overflow-y-auto">
+                  <div className="max-h-[300px] sm:max-h-[400px] lg:max-h-[500px] overflow-y-auto">
                     <pre className="text-green-300 font-mono text-sm leading-relaxed">
                       {thinkingMessage}
                     </pre>
@@ -178,15 +178,15 @@ export default function Home() {
                 </div>
               ) : (
                 result && (
-                  <div className="mt-10 p-8 bg-black/90 rounded-xl border border-green-500/40 backdrop-blur-lg">
-                    <h2 className="text-2xl font-bold text-green-400 mb-6 flex items-center gap-3">
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="mt-6 sm:mt-8 lg:mt-10 p-4 sm:p-6 lg:p-8 bg-black/90 rounded-xl border border-green-500/40 backdrop-blur-lg">
+                    <h2 className="text-xl sm:text-2xl font-bold text-green-400 mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
+                      <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                       </svg>
                       Threat Analysis Report
                     </h2>
-                    <div className="max-h-[500px] overflow-y-auto">
-                      <div className="text-green-300 font-mono text-sm leading-relaxed whitespace-pre-wrap break-words bg-black/50 p-6 rounded-xl border border-green-500/30" dangerouslySetInnerHTML={{ __html: result }} />
+                    <div className="max-h-[300px] sm:max-h-[400px] lg:max-h-[500px] overflow-y-auto">
+                      <div className="text-green-300 font-mono text-sm leading-relaxed whitespace-pre-wrap break-words bg-black/50 p-4 sm:p-6 rounded-xl border border-green-500/30" dangerouslySetInnerHTML={{ __html: result }} />
                     </div>
                   </div>
                 )
